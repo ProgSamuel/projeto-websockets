@@ -12,12 +12,8 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class EventsGateway implements OnGatewayInit {
   private server: Server;
-  private messages1: string[] = [
-    'Mensagem  do perfil 1',
-  ];
-  private messages2: string[] = [
-    'Mensagem  do perfil 2',
-  ];
+  private messages1: string[] = ['Mensagem  do perfil 1'];
+  private messages2: string[] = ['Mensagem  do perfil 2'];
   private profiles: { [id: string]: string } = {};
 
   afterInit(server: Server) {
@@ -62,7 +58,7 @@ export class EventsGateway implements OnGatewayInit {
             }
           }
           if (profile !== 'perfil1' && profile !== 'perfil2') {
-            const messages = this.messages1.concat(this.messages2)
+            const messages = this.messages1.concat(this.messages2);
             for (const msg of messages) {
               this.server.to(profile).emit('messages', {
                 message: `Nº${index + 1} - Grupo selecionado: ${profile} - msg: ${msg}`,

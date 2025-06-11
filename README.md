@@ -1,3 +1,5 @@
+# Aplicação WebSocket com NestJS
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
@@ -22,41 +24,80 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+## Descrição
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Esta é uma aplicação de mensagens em tempo real que implementa um sistema de comunicação via WebSocket, permitindo que usuários se conectem através de diferentes perfis (perfil1 e perfil2). O sistema envia mensagens automáticas a cada 3 segundos para os grupos conectados, com conteúdo personalizado dependendo do perfil do usuário. O objetivo principal é demonstrar a implementação de comunicação bidirecional em tempo real usando WebSockets com NestJS, simulando um sistema de chat com diferentes canais de comunicação.
 
-## Installation
+## Funcionalidades
+
+- Sistema de perfis de usuário (perfil1 e perfil2)
+- Mensagens em tempo real via WebSocket
+- Broadcast de mensagens para grupos específicos
+- Mensagens automáticas periódicas
+- Suporte a múltiplos clientes conectados
+
+## Tecnologias Utilizadas
+
+- NestJS
+- Socket.IO
+- TypeScript
+- Node.js
+
+## Instalação
 
 ```bash
 $ yarn install
 ```
 
-## Running the app
+## Executando a Aplicação
 
 ```bash
-# development
+# desenvolvimento
 $ yarn run start
 
-# watch mode
+# modo watch
 $ yarn run start:dev
 
-# production mode
+# modo produção
 $ yarn run start:prod
 ```
 
-## Test
+## Estrutura do Projeto
+
+```
+src/
+├── app.controller.ts      # Controlador principal
+├── app.module.ts         # Módulo principal da aplicação
+├── app.service.ts        # Serviço principal
+├── main.ts              # Ponto de entrada da aplicação
+└── events/              # Diretório de eventos WebSocket
+    └── eventos.gateway.ts # Gateway WebSocket
+```
+
+## Eventos WebSocket
+
+A aplicação suporta os seguintes eventos:
+
+- `joinProfile`: Permite que clientes se juntem a um perfil específico
+- `events`: Manipula eventos gerais
+- `messages`: Recebe mensagens do servidor
+
+## Testes
 
 ```bash
-# unit tests
+# testes unitários
 $ yarn run test
 
-# e2e tests
+# testes e2e
 $ yarn run test:e2e
 
-# test coverage
+# cobertura de testes
 $ yarn run test:cov
 ```
+
+## Licença
+
+Este projeto está licenciado sob a [Licença MIT](LICENSE).
 
 ## Support
 
@@ -67,7 +108,3 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 - Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
 - Website - [https://nestjs.com](https://nestjs.com/)
 - Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
